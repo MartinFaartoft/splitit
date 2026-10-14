@@ -1,5 +1,15 @@
 @* The sign-in screen (spec §4): an address, then the code — one page, one tab. *@
 <Page Title="Sign in">
+    <div id="sign-in">
+        @if (AskForCode)
+        {
+            <CodeStep Email="@Email" Error="@Error" ReturnUrl="@ReturnUrl" />
+        }
+        else
+        {
+            <EmailStep Email="@Email" Error="@Error" ReturnUrl="@ReturnUrl" />
+        }
+    </div>
     <section id="about">
         <h2>Welcome to SplitIt 👋</h2>
         <p>
@@ -13,16 +23,6 @@
             <p><strong>Heads up:</strong> SplitIt is still under development. Data may be changed or disappear without notice, so don't rely on it as your only record of money that matters.</p>
         </div>
     </section>
-    <div id="sign-in">
-        @if (AskForCode)
-        {
-            <CodeStep Email="@Email" Error="@Error" ReturnUrl="@ReturnUrl" />
-        }
-        else
-        {
-            <EmailStep Email="@Email" Error="@Error" ReturnUrl="@ReturnUrl" />
-        }
-    </div>
 </Page>
 
 @code {
